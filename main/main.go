@@ -13,7 +13,7 @@ func main() {
 		return
 	}
 
-	file, err := os.Create("Uyga_vazifa22/username.txt")
+	file, err := os.Create("username.txt")
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
@@ -21,6 +21,25 @@ func main() {
 	defer file.Close()
 
 	_, err = file.WriteString(userName)
+    if err != nil {
+        fmt.Println("Error:", err)
+        return
+    }
+
+	userEmail, err := git.GetUserEmail()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	file, err = os.Create("useremail.txt")
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+	defer file.Close()
+
+	_, err = file.WriteString(userEmail)
     if err != nil {
         fmt.Println("Error:", err)
         return

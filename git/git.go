@@ -9,3 +9,11 @@ func GetUserName() (string, error) {
 	}
 	return string(out), nil
 }
+
+func GetUserEmail() (string, error) {
+    out, err := exec.Command("git", "config", "--global", "user.email").Output()
+    if err != nil {
+        return "", err
+    }
+    return string(out), nil
+}
